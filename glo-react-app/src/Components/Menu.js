@@ -15,16 +15,22 @@ const SectionMenu = styled.section`
     padding: 30px;
 `;
 
-export const Menu = () => (
+export const Menu = ({ setOpenItem }) => (
     <MenuStyled>
         <Banner />
         <SectionMenu>
             <h2>Бургеры</h2>
-            <ListItem itemList={dbMemu.burger}/>
+            <ListItem 
+                itemList={dbMemu.burger}
+                setOpenItem={setOpenItem}
+            />
         </SectionMenu>
         <SectionMenu>
             <h2>Закуски и напитки</h2>
-            <ListItem itemList={dbMemu.other}/>
+            <ListItem 
+                itemList={dbMemu.other}
+                setOpenItem={setOpenItem}
+            />
         </SectionMenu>
 
 
