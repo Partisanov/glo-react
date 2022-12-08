@@ -4,6 +4,7 @@ import trashImage from "../image/trash.svg"
 
 const OrderItemStyled = styled.li`
     display: flex;
+    justify-content: space-between;
     margin: 15px 0;
 `;
 
@@ -29,11 +30,11 @@ const TrashButton = styled.button`
 
 `;
 
-export const OrderListItem = () => (
+export const OrderListItem = ({ order }) => (
     <OrderItemStyled>
-        <ItemName>JS Burger</ItemName>
+        <ItemName>{order.name}</ItemName>
         <span>2</span>
-        <ItemPrice>750 Р</ItemPrice>
+        <ItemPrice>{order.price.toLocaleString('ru-RU',{ style: 'currency', currency: 'RUB'})}</ItemPrice>
         <TrashButton/>
     </OrderItemStyled>
 );

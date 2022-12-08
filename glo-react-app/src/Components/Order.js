@@ -25,10 +25,13 @@ const OrderTitle = styled.h2`
 
 const OrderContent = styled.div`
     flex-grow: 1;
-
 `;
 
 const OrderList = styled.ul``;
+
+const EmptyList = styled.p`
+    text-align: center;
+`;
 
 const Total = styled.div`
     display: flex;
@@ -44,15 +47,17 @@ const TotalPrice = styled.span`
     margin-left: 20px;
 `;
 
-export const Order = () => {
+export const Order = ( {orders} ) => {
     return (
         <>
             <OrderStyled>
                 <OrderTitle>ВАШ ЗАКАЗ</OrderTitle>
                 <OrderContent>
+                    {orders.length ? 
                     <OrderList>
-                        <OrderListItem/>
-                    </OrderList>
+                        { orders.map(order => <OrderListItem order={order}/>) }
+                    </OrderList> :
+                    <EmptyList>Список заказов пуст</EmptyList>}
                 </OrderContent>
                 <Total>
                     <span>Итого:</span>
