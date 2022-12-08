@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Banner } from "./Banner";
-import dbMemu from "./DBMenu"
+import dbMemu from "../DBMenu"
 import { ListItem } from "./ListItem";
 
 
