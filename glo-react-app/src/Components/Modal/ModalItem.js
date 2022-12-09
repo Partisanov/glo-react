@@ -2,8 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { formatCurrency, totalPriceItems } from "../Functions/secondaryFunction";
 import { useCount } from "../Hooks/useCount";
+import { useToppings } from "../Hooks/useTopping";
 import { ButtonCheckout } from "../Style/ButtonCheckout";
 import { CountItem } from "./CountItem";
+import { Toppings } from "./Toppings";
+
+
 
 const Overlay = styled.div`
     position: fixed;
@@ -56,6 +60,7 @@ const TotalPriceItem = styled.div`
 export const ModalItem = ({openItem, setOpenItem, orders, setOrders} ) => {
 
     const counter = useCount();
+    const toppings = useToppings(openItem);
 
     
     const closeModal = (e) => {
@@ -66,7 +71,8 @@ export const ModalItem = ({openItem, setOpenItem, orders, setOrders} ) => {
 
     const order = {
         ...openItem,
-        count: counter.count
+        count: counter.count,
+        topping: toppings.toppings
     }
     
     const addToOrder = () => {
@@ -84,10 +90,12 @@ export const ModalItem = ({openItem, setOpenItem, orders, setOrders} ) => {
                     <div>{formatCurrency(openItem.price)}</div>
                 </HeaderContent>
                 <CountItem {...counter}/>
+               { openItem.toppings && <Toppings {...toppings}/>}
                 <TotalPriceItem>
                     <span>Цена:</span>
                     <span>{formatCurrency(totalPriceItems(order))}</span>
                 </TotalPriceItem>
+                
                 <ButtonCheckout onClick={addToOrder}>Добавить</ButtonCheckout>
             </Content>
         </Modal>
