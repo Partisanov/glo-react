@@ -13,7 +13,7 @@ const OrderStyled = styled.section`
   left: 0;
   padding: 20px;
   background: #fff;
-  min-width: 380px;
+  width: 380px;
   height: calc(100% - 80px);
   box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.25);
 `;
